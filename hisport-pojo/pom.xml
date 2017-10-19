@@ -6,4 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>hisport-pojo</artifactId>
+  <dependencies>
+   <dependency>
+  		<groupId>com.w77996.hisport</groupId>
+    <artifactId>hisport-common</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+ 
 </project>
