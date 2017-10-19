@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.w77996.hisport</groupId>
+  <artifactId>parent191</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>hisport-common</module>
+  	<module>hisport-pojo</module>
+  	<module>hisport-dao</module>
+  	<module>hisport-interface</module>
+  	<module>hisport-console</module>
+  	<module>hisport-portal</module>
+  	<module>hisport-login</module>
+  	<module>hisport-service-cob</module>
+  	<module>hisport-srevice-solr</module>
+  	<module>hisport-service-product</module>
+  	<module>hisport-srevice-cms</module>
+  </modules>
+</project>
