@@ -7,4 +7,17 @@
   </parent>
   <artifactId>hisport-srevice-cms</artifactId>
   <packaging>war</packaging>
+  
+    <dependencies>
+		<dependency>
+			<groupId>com.w77996.hisport</groupId>
+			<artifactId>hisport-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.w77996.hisport</groupId>
+			<artifactId>hisport-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>

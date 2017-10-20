@@ -7,4 +7,12 @@
   </parent>
   <artifactId>hisport-login</artifactId>
   <packaging>war</packaging>
+  
+  <dependencies>
+		<dependency>
+			<groupId>com.w77996.hisport</groupId>
+			<artifactId>hisport-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
