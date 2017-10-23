@@ -26,4 +26,6 @@
 			<property name="prefix" value="/WEB-INF/console/"></property>
 			<property name="suffix" value=".jsp"></property>
 		</bean>
+		
+		
 </beans>
