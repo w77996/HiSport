@@ -20,12 +20,16 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-		<comtext:component-scan base-package="com.w77996"/>
-		<mvc:annotation-driven/>
-		<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/console/"></property>
-			<property name="suffix" value=".jsp"></property>
-		</bean>
+		<!-- 扫描 @Contr -->	
+	<context:component-scan base-package="com.w77996" />
+	<!-- 处理器 映射器  适配器 -->
+	<mvc:annotation-driven/>
+	<!-- 视图解释器 jsp -->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/console/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
 		
+		<!-- <import resource="dubbo-consumer.xml"/> -->
 		
 </beans>

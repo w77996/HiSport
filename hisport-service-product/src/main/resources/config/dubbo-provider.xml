@@ -20,8 +20,11 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	<tx:annotation-driven transtaction-manager="transactionManager"/>
+	<dubbo:application name="hisport-service-product"/>
+	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
+	<!--直接连接  -->
+	<dubbo:registry address="N/A"/>
+	<dubbo:protocol prot="20880" name="dubbo"/> 
+	<dubbo:service interface="" ref=""/>
+	<!-- <bean id="" class=""/> -->
 </beans>
