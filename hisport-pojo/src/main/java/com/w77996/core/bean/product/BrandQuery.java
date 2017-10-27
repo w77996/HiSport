@@ -1,4 +1,4 @@
-package com.w77996.core.product;
+package com.w77996.core.bean.product;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author lx
  *
  */
-public class Brand implements Serializable{
+public class BrandQuery implements Serializable{
 
 	
 	/**
@@ -66,9 +66,37 @@ public class Brand implements Serializable{
 		return serialVersionUID;
 	}
 	
-	
 	@Override
 	public String toString(){
 		return "brand [id="+id+",name="+name+"]";
 	}
+	
+	private Integer pageNo = 1;
+	private Integer pageSize = 10;
+	
+	
+	private Integer startRow;
+	public Integer getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(Integer pageNo) {
+		this.startRow = (pageNo -1) *pageSize;
+		this.pageNo = pageNo;
+	}
+	public Integer getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(Integer pageSize) {
+		this.startRow = (pageNo -1) *pageSize;
+		this.pageSize = pageSize;
+	}
+	public Integer getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(Integer startRow) {
+		this.startRow = startRow;
+	}
+	
+	
+	
 }

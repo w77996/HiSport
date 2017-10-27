@@ -20,8 +20,6 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	<tx:annotation-driven transtaction-manager="transactionManager"/>
+	<!-- 扫描 -->
+	<context:component-scan base-package="com.w77996"/>
 </beans>

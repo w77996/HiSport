@@ -20,12 +20,14 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-<!-- 	<dubbo:application name="hisport-console"/> -->
+ 	<dubbo:application name="hisport-console"/>
 <!-- 	<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
-	<!-- <dubbo:registry address="N/A" check="false"/>
-	<dubbo:protocol prot="20880" name="dubbo"/> 
-	<dubbo:reference interface="" id="" url="dubbo://127.0.0.1:20880" />
-	<dubbo:consumer timeout="6000" check="false"/> -->
+	 <dubbo:registry address="N/A" check="false"/>
+	<!-- <dubbo:protocol prot="20880" name="dubbo"/>  -->
+	<dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"
+		url="dubbo://127.0.0.1:20880" 
+	/>
+	<dubbo:consumer timeout="6000" check="false"/> 
 	<!-- <dubbo:service interface="" ref=""/> -->
 	<!-- <bean id="" class=""/> -->
 </beans>

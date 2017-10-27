@@ -24,7 +24,7 @@
 	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
 	<!--直接连接  -->
 	<dubbo:registry address="N/A"/>
-	<dubbo:protocol prot="20880" name="dubbo"/> 
-	<dubbo:service interface="" ref=""/>
+	<dubbo:protocol port="20880" name="dubbo"/>
+	<dubbo:service interface="com.w77996.core.service.product.BrandService" ref="brandService"/>
 	<!-- <bean id="" class=""/> -->
 </beans>

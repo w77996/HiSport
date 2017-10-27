@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.w77996.core.dao.product.BrandDao">
+
+	<resultMap type="Brand" id="brand">
+		<result column="img_url" property="imgUrl" />
+		<result column="is_display" property="isDisplay" />
+	</resultMap>
+	<!-- 保存 -->
+	<select id="selectBrandListByQuery" parameterType="Brand"
+		resultMap="brand">
+		select id,name,description,img_url,sort,is_display
+		from bbs_brand
+		<where>
+			<if test="name != null">
+				name like "%"#{name}"%"
+			</if>
+			<if test="isDisplay != null">
+				and is_display = #{isDisplay}
+			</if>
+		</where>
+		<if test="startRow !=null">
+
+			limit #{startRow},#{pageSize}
+		</if>
+	</select>
+
+	<select id="selectBrandListByQuery" parameterType="Brand"
+		resultMap="brand">
+		select count(1)
+		from bbs_brand
+		<where>
+			<if test="name != null">
+				name like "%"#{name}"%"
+			</if>
+			<if test="isDisplay != null">
+				and is_display = #{isDisplay}
+			</if>
+		</where>
+
+	</select>
+	
+	<select id="selectBrandById" parameterType="Long"
+		resultMap="brand">
+		select count(1)
+		from bbs_brand
+		<where>
+			id=#{id}
+			
+		</where>
+
+	</select>
+
+</mapper>

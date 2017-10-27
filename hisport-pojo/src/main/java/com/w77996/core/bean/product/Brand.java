@@ -1,4 +1,4 @@
-package com.w77996.core.product;
+package com.w77996.core.bean.product;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author lx
  *
  */
-public class BrandQuery implements Serializable{
+public class Brand implements Serializable{
 
 	
 	/**
@@ -66,12 +66,9 @@ public class BrandQuery implements Serializable{
 		return serialVersionUID;
 	}
 	
+	
 	@Override
 	public String toString(){
 		return "brand [id="+id+",name="+name+"]";
 	}
-	
-	private Integer pageNo = 1;
-	private Integer pageSize = 10;
-	
 }
