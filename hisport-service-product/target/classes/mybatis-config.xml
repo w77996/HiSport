@@ -2,8 +2,19 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!-- 不能联想 sts-->
 <configuration>
+	<!-- setting 迟延加载  二级缓存 （不用）   分布式缓存  -->
+	
+	
+	<!-- 别名 -->
 	<typeAliases>
 		<package name="com.w77996.core.bean"/>
 	</typeAliases>
+	
+	<!-- Mapper 位置 配置
+	<mappers>
+	</mappers>
+	 -->
+
 </configuration>

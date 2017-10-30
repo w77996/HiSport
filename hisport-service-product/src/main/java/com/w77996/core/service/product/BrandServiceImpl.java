@@ -15,7 +15,7 @@ import cn.itcast.common.page.Pagination;
 public class BrandServiceImpl implements BrandService{
 
 	@Autowired
-	private BrandDao brandDao;
+	public  BrandDao brandDao;
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
 		brandQuery.setPageNo(Pagination.cpn(pageNo));

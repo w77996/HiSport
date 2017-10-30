@@ -19,14 +19,18 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
-		<url-pattern>.do</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	
+		<!-- 上下文配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:application-context.xml</param-value>
 	</context-param>
+	
+	<!-- 监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
 </web-app>

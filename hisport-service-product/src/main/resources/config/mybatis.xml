@@ -20,7 +20,8 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-		<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- sqlSessionFactory 工厂   mybatis-3.2.7   mybaits-spring-1.2.2.jar-->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 配置Mybatis核心配置文件所在位置 -->

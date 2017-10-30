@@ -20,14 +20,19 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
- 	<dubbo:application name="hisport-console"/>
-<!-- 	<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
-	 <dubbo:registry address="N/A" check="false"/>
-	<!-- <dubbo:protocol prot="20880" name="dubbo"/>  -->
-	<dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"
+ 	<!-- Dubbo消费方 -->
+	<!-- 1：名称  计算机 区别 唯一 -->
+	<dubbo:application name="hisport-console"/>
+	<!-- 2：设置注册中心  地址  zookeeper在哪里  redis ... -->
+<!-- 	<dubbo:registry address="192.168.200.128:2181,192.168.200.129:2181,192.168.200.130:2181" protocol="zookeeper"/> -->
+	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
+	 <dubbo:registry address="N/A" check="false" /> 
+	<!-- 4： 调用此接口对应的实现类  单位毫秒-->
+	
+	 <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"
 		url="dubbo://127.0.0.1:20880" 
-	/>
-	<dubbo:consumer timeout="6000" check="false"/> 
-	<!-- <dubbo:service interface="" ref=""/> -->
-	<!-- <bean id="" class=""/> -->
+	/> 
+	<!-- <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"	/> -->
+	<!-- 全局设置 -->
+	 <dubbo:consumer timeout="600000" check="false"/>
 </beans>

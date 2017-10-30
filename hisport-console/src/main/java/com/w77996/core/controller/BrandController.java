@@ -1,5 +1,6 @@
 package com.w77996.core.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,11 @@ import com.w77996.core.service.product.BrandService;
 import cn.itcast.common.page.Pagination;
 
 @Controller
+@RequestMapping
 public class BrandController {
 
 	@Autowired
-	private BrandService brandService;
+	public BrandService brandService;
 	
 	@RequestMapping("/brand/list.do")
 	public String list(String name,Integer isDisplay,Integer pageNo,Model model){
