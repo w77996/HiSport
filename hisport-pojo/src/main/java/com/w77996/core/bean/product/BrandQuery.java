@@ -62,32 +62,33 @@ public class BrandQuery implements Serializable{
 	public void setIsDisplay(Integer isDisplay) {
 		this.isDisplay = isDisplay;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	@Override
-	public String toString(){
-		return "brand [id="+id+",name="+name+"]";
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + ", description=" + description + ", imgUrl=" + imgUrl + ", sort="
+				+ sort + ", isDisplay=" + isDisplay + "]";
 	}
 	
+	//附加字段
 	private Integer pageNo = 1;
 	private Integer pageSize = 10;
-	
-	
+	//开始行
 	private Integer startRow;
+	
+	
 	public Integer getPageNo() {
 		return pageNo;
 	}
 	public void setPageNo(Integer pageNo) {
-		this.startRow = (pageNo -1) *pageSize;
+		//计算开始行
+		this.startRow = (pageNo-1)*pageSize;
 		this.pageNo = pageNo;
 	}
 	public Integer getPageSize() {
 		return pageSize;
 	}
 	public void setPageSize(Integer pageSize) {
-		this.startRow = (pageNo -1) *pageSize;
+		//计算开始行
+		this.startRow = (pageNo-1)*pageSize;
 		this.pageSize = pageSize;
 	}
 	public Integer getStartRow() {
@@ -96,7 +97,5 @@ public class BrandQuery implements Serializable{
 	public void setStartRow(Integer startRow) {
 		this.startRow = startRow;
 	}
-	
-	
 	
 }

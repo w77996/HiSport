@@ -12,30 +12,32 @@ import com.w77996.core.service.product.BrandService;
 import cn.itcast.common.page.Pagination;
 
 @Controller
-@RequestMapping
 public class BrandController {
 
 	@Autowired
-	public BrandService brandService;
+	private BrandService brandService;
 	
-	@RequestMapping("/brand/list.do")
+	//查询
+	@RequestMapping(value = "/brand/list.do")
 	public String list(String name,Integer isDisplay,Integer pageNo,Model model){
-		Pagination pagination  = brandService.selectPaginationByQuery(name, isDisplay, pageNo);
-		model.addAttribute("pagination",pagination);
-		model.addAttribute("name",name);
+		
+		Pagination pagination = brandService.selectPaginationByQuery(name, isDisplay, pageNo);
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("name", name);
 		if(null != isDisplay){
-			model.addAttribute("isDisplay",isDisplay);
+			model.addAttribute("isDisplay", isDisplay);
 		}else{
-			model.addAttribute("isDisplay",1);
+			model.addAttribute("isDisplay", 1);
 		}
 		
 		return "brand/list";
 	}
-	
-	@RequestMapping("/brand/toEdit.do")
+	//去修改页面
+	@RequestMapping(value = "/brand/toEdit.do")
 	public String toEdit(Long id,Model model){
-		Brand brand =brandService.selectBrandById(id);
+		Brand brand = brandService.selectBrandById(id);//Shift+Alt +L
 		model.addAttribute("brand", brand);
-		return "/brand/list";
+		
+		return "brand/edit";
 	}
 }

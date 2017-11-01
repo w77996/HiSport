@@ -15,12 +15,15 @@ import cn.itcast.common.page.Pagination;
 public class BrandServiceImpl implements BrandService{
 
 	@Autowired
-	public  BrandDao brandDao;
+	private BrandDao brandDao;
+	//查询分页对象
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
+		//当前页
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
-		brandQuery.setPageSize(2);
-
+		//每页数
+		brandQuery.setPageSize(1);
+		
 		StringBuilder params = new StringBuilder();
 		
 		//条件

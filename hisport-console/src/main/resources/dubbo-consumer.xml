@@ -30,9 +30,8 @@
 	<!-- 4： 调用此接口对应的实现类  单位毫秒-->
 	
 	 <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"
-		url="dubbo://127.0.0.1:20880" 
-	/> 
+		url="dubbo://127.0.0.1:20880"/> 
 	<!-- <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"	/> -->
 	<!-- 全局设置 -->
-	 <dubbo:consumer timeout="600000" check="false"/>
+	 <dubbo:consumer timeout="60000" check="false"/>
 </beans>

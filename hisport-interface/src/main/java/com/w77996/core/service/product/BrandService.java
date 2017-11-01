@@ -8,4 +8,6 @@ public interface BrandService {
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo);
 	
 	public Brand selectBrandById(Long id);
+	
+	//public Brand selectCount(Long id);
 }

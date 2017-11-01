@@ -59,8 +59,7 @@
 </table>
 <div class="page pb15">
 	<span class="r inb_a page_b">
-	
-		<c:forEach item="${pagination.pageView }" var="page">
+		<c:forEach items="${pagination.pageView }" var="page">
 			${page }
 		</c:forEach>
 	</span>

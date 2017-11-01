@@ -62,13 +62,11 @@ public class Brand implements Serializable{
 	public void setIsDisplay(Integer isDisplay) {
 		this.isDisplay = isDisplay;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
 	@Override
-	public String toString(){
-		return "brand [id="+id+",name="+name+"]";
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + ", description=" + description + ", imgUrl=" + imgUrl + ", sort="
+				+ sort + ", isDisplay=" + isDisplay + "]";
 	}
+	
+
 }
