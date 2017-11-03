@@ -41,3 +41,4 @@ public class CenterController {
 		return "frame/product_list";
 	}
 }
+

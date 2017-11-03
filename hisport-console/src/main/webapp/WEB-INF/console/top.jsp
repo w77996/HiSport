@@ -44,12 +44,12 @@ body{height:100%;}
 
 <script type="text/javascript">
 function HoverLi(id){
-	$("li[id^='tb_']").each(function(){
-		$(this).removeClass("current");
-		$(this).addClass("normal");
-	});
-	$("#tb_"+id).removeClass("normal");
-	$("#tb_"+id).addClass("current");
+  $("li[id^='tb_']").each(function(){
+    $(this).removeClass("current");
+    $(this).addClass("normal");
+  });
+  $("#tb_"+id).removeClass("normal");
+  $("#tb_"+id).addClass("current");
 }
 </script>
 </head>
@@ -73,21 +73,21 @@ function HoverLi(id){
                                 </table>
                        </div>  
                      <div class="nav">
-                     	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td style="background-image:url('/images/admin/nav-left.png')" width="14" height="31"></td>
                                 <td>
-                                	<ul class="nav-menu">
-                                    	<li class="current" id="tb_11" onclick="HoverLi(11);"><a href="main.do" target="mainFrame">首页</a></li>
-										<li class="sep"></li><li class="normal" id="tb_12" onclick="HoverLi(12);"><a href="frame/product_main.do" target="mainFrame">商品</a></li>
-										<li class="sep"></li><li class="normal" id="tb_13" onclick="HoverLi(13);"><a href="frame/order_main.do" target="mainFrame">订单</a></li>
-										<li class="sep"></li><li class="normal" id="tb_14" onclick="HoverLi(14);"><a href="frame/product_main.do" target="mainFrame">支付</a></li>
-										<li class="sep"></li><li class="normal" id="tb_15" onclick="HoverLi(15);"><a href="frame/product_main.do" target="mainFrame">资源</a></li>
-										<li class="sep"></li><li class="normal" id="tb_16" onclick="HoverLi(16);"><a href="frame/product_main.do" target="mainFrame">辅助</a></li>
-										<li class="sep"></li><li class="normal" id="tb_17" onclick="HoverLi(17);"><a href="frame/product_main.do" target="mainFrame">维护</a></li>
-										<li class="sep"></li><li class="normal" id="tb_18" onclick="HoverLi(18);"><a href="frame/product_main.do" target="mainFrame">生成</a></li>
-										<li class="sep"></li><li class="normal" id="tb_19" onclick="HoverLi(19);"><a href="frame/product_main.do" target="mainFrame">用户</a></li>
-										<li class="sep"></li><li class="normal" id="tb_20" onclick="HoverLi(20);"><a href="frame/product_main.do " target="mainFrame">配置</a></li>
+                                  <ul class="nav-menu">
+                                      <li class="current" id="tb_11" onclick="HoverLi(11);"><a href="main.do" target="mainFrame">首页</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_12" onclick="HoverLi(12);"><a href="frame/product_main.do" target="mainFrame">商品</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_13" onclick="HoverLi(13);"><a href="frame/order_main.jsp" target="mainFrame">订单</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_14" onclick="HoverLi(14);"><a href="frame/product_main.jsp" target="mainFrame">支付</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_15" onclick="HoverLi(15);"><a href="frame/product_main.jsp" target="mainFrame">资源</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_16" onclick="HoverLi(16);"><a href="frame/product_main.jsp" target="mainFrame">辅助</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_17" onclick="HoverLi(17);"><a href="frame/product_main.jsp" target="mainFrame">维护</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_18" onclick="HoverLi(18);"><a href="frame/product_main.jsp" target="mainFrame">生成</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_19" onclick="HoverLi(19);"><a href="frame/product_main.jsp" target="mainFrame">用户</a></li>
+                    <li class="sep"></li><li class="normal" id="tb_20" onclick="HoverLi(20);"><a href="frame/product_main.jsp" target="mainFrame">配置</a></li>
                                     </ul>
                                 </td>
                               </tr>
