@@ -31,4 +31,5 @@
 	<dubbo:protocol port="20880" name="dubbo"/>
 	<!-- 4： 暴露实现类-->
 	<dubbo:service interface="com.w77996.core.service.product.BrandService" ref="brandService"/>
+	<dubbo:service interface="com.w77996.core.service.product.UploadService" ref="uploadService"/>
 </beans>
