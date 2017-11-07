@@ -10,4 +10,10 @@ public interface BrandService {
 	public Brand selectBrandById(Long id);
 	
 	//public Brand selectCount(Long id);
+	
+
+	public void updateBrandById(Brand brand);
+	
+	
+	public void deletes(Long[] ids);
 }

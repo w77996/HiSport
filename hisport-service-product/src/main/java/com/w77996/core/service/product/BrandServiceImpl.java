@@ -58,4 +58,14 @@ public class BrandServiceImpl implements BrandService{
 		// TODO Auto-generated method stub
 		return brandDao.selectBrandById(id);
 	}
+	@Override
+	public void updateBrandById(Brand brand) {
+		// TODO Auto-generated method stub
+		brandDao.updateBrandById(brand);
+	}
+	@Override
+	public void deletes(Long[] ids) {
+		// TODO Auto-generated method stub
+		brandDao.deletes(ids);
+	}
 }

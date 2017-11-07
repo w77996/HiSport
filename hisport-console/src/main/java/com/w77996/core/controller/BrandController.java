@@ -40,4 +40,20 @@ public class BrandController {
 		
 		return "brand/edit";
 	}
+	
+	
+	//修改
+		@RequestMapping(value = "/brand/edit.do")
+		public String edit(Brand brand){
+			
+			brandService.updateBrandById(brand);
+			
+			return "redirect:/brand/list.do";
+		}
+		
+		@RequestMapping(value = "/brand/deletes.do")
+		public String deletes(Long[] ids){
+			brandService.deletes(ids);
+			return "forward:/brand/list.do";
+		}
 }
