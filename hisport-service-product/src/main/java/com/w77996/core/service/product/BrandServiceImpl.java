@@ -22,7 +22,7 @@ public class BrandServiceImpl implements BrandService{
 		//当前页
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
-		brandQuery.setPageSize(1);
+		brandQuery.setPageSize(5);
 		
 		StringBuilder params = new StringBuilder();
 		

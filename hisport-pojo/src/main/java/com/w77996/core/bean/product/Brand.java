@@ -2,11 +2,6 @@ package com.w77996.core.bean.product;
 
 import java.io.Serializable;
 
-/**
- * 品牌
- * @author lx
- *
- */
 public class Brand implements Serializable{
 
 	
@@ -67,6 +62,9 @@ public class Brand implements Serializable{
 		return "Brand [id=" + id + ", name=" + name + ", description=" + description + ", imgUrl=" + imgUrl + ", sort="
 				+ sort + ", isDisplay=" + isDisplay + "]";
 	}
+	
+	
+	
 	
 
 }

@@ -2,11 +2,7 @@ package com.w77996.core.bean.product;
 
 import java.io.Serializable;
 
-/**
- * 品牌
- * @author lx
- *
- */
+
 public class BrandQuery implements Serializable{
 
 	
@@ -98,4 +94,11 @@ public class BrandQuery implements Serializable{
 		this.startRow = startRow;
 	}
 	
+	
+	
+	
+	
+	
+	
+
 }
