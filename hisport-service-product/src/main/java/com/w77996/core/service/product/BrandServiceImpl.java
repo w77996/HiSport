@@ -1,5 +1,7 @@
 package com.w77996.core.service.product;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,7 @@ public class BrandServiceImpl implements BrandService{
 		//当前页
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
-		brandQuery.setPageSize(5);
+		brandQuery.setPageSize(2);
 		
 		StringBuilder params = new StringBuilder();
 		
@@ -67,5 +69,12 @@ public class BrandServiceImpl implements BrandService{
 	public void deletes(Long[] ids) {
 		// TODO Auto-generated method stub
 		brandDao.deletes(ids);
+	}
+	@Override
+	public List<Brand> selectBrandListByQuery(Integer isDisplay) {
+		BrandQuery brandQuery = new BrandQuery();
+		brandQuery.setIsDisplay(isDisplay);
+		// TODO Auto-generated method stub
+		return brandDao.selectBrandListByQuery(brandQuery);
 	}
 }

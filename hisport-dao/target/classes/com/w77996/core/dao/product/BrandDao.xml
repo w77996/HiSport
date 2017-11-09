@@ -5,6 +5,7 @@
 <mapper namespace="com.w77996.core.dao.product.BrandDao">
 
 
+	
 	<resultMap type="Brand" id="brand">
 		<result column="img_url" property="imgUrl"/>
 		<result column="is_display" property="isDisplay"/>
@@ -81,5 +82,6 @@
 			</foreach>
 		</where>
 	</delete>
+	
 	
 </mapper>

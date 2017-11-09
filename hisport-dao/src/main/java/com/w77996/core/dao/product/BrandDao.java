@@ -3,7 +3,6 @@ package com.w77996.core.dao.product;
 import com.w77996.core.bean.product.Brand;
 import com.w77996.core.bean.product.BrandQuery;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface BrandDao {
 	
