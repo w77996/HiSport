@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.w77996.core.bean.product.Brand;
 import com.w77996.core.bean.product.Color;
+import com.w77996.core.bean.product.Product;
 import com.w77996.core.service.product.BrandService;
 import com.w77996.core.service.product.ProductService;
 
@@ -52,6 +53,19 @@ public class ProductController {
 		List<Color> colors = productService.selectColorList();
 		model.addAttribute("colors", colors);
 		return "product/add";
+	}
+	//商品保存
+	@RequestMapping(value = "/product/add.do")
+	public String add(Product product){
+		productService.insertProduct(product);
+		
+		return "redirect:/product/list.do";
+	}
+	//上架 批量
+	@RequestMapping(value = "/product/isShow.do")
+	public String isShow(Long[] ids){
+		productService.isShow(ids);
+		return "forward:/product/list.do";
 	}
 }
 

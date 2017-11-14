@@ -1,6 +1,8 @@
 package com.w77996.core.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
@@ -34,5 +37,21 @@ public class UploadController {
 		response.getWriter().write(jo.toString());
 		
 	}
+	
+	//上传多张图片
+		@RequestMapping(value = "/upload/uploadPics.do")
+		public @ResponseBody
+		List<String> uploadPics(@RequestParam(required = false) MultipartFile[] pics
+				,HttpServletResponse response) throws IOException{
+			
+			List<String> urls = new ArrayList<String>();
+			
+			for (MultipartFile pic : pics) {
+				String path = uploadService.uploadPic(pic.getBytes(), pic.getOriginalFilename(), pic.getSize());
+				String url = Constants.IMG_URL + path;
+				urls.add(url);
+			}
+			return urls;
+		}
 }
 

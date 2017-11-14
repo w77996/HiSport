@@ -1,5 +1,6 @@
 package com.w77996.core.service.product;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.w77996.core.bean.product.Color;
 import com.w77996.core.bean.product.ColorQuery;
+import com.w77996.core.bean.product.Product;
 import com.w77996.core.bean.product.ProductQuery;
 import com.w77996.core.bean.product.ProductQuery.Criteria;
+import com.w77996.core.bean.product.Sku;
 import com.w77996.core.dao.product.ColorDao;
 import com.w77996.core.dao.product.ProductDao;
+import com.w77996.core.dao.product.SkuDao;
 
 import cn.itcast.common.page.Pagination;
+import redis.clients.jedis.Jedis;
 
 @Service("productService")
 @Transactional
@@ -68,5 +73,70 @@ public class ProductServiceImpl implements ProductService{
 		ColorQuery colorQuery = new ColorQuery();
 		colorQuery.createCriteria().andParentIdNotEqualTo(0L);
 		return colorDao.selectByExample(colorQuery);
+	}
+	@Autowired
+	private SkuDao skuDao;
+	/*@Autowired
+	private Jedis jedis;*/
+	//商品保存
+	public void insertProduct(Product product){
+		//保存商品  
+	/*	Long id = jedis.incr("pno");
+		product.setId(id);
+//		下架状态 后台程序写的
+		product.setIsShow(false);
+//		删除  后台程序写的不删除
+		product.setIsDel(true);
+		productDao.insertSelective(product);
+		//返回ID
+		//保存SKU
+		String[] colors = product.getColors().split(",");
+		String[] sizes = product.getSizes().split(",");
+		//颜色
+		for (String color : colors) {
+			for (String size : sizes) {
+				//保存SKU
+				Sku sku = new Sku();
+				//商品ＩＤ
+				sku.setProductId(product.getId());
+				//颜色
+				sku.setColorId(Long.parseLong(color));
+				//尺码
+				sku.setSize(size);
+				//市场价
+				sku.setMarketPrice(999f);
+				//售价
+				sku.setPrice(666f);
+				//运费
+				sku.setDeliveFee(8f);
+				//库存
+				sku.setStock(0);
+				//限制
+				sku.setUpperLimit(200);
+				//时间
+				sku.setCreateTime(new Date());
+				
+				skuDao.insertSelective(sku);
+				
+			}
+		}*/
+	}
+	//上架
+	public void isShow(Long[] ids){
+		Product product = new Product();
+		//上架
+		product.setIsShow(true);
+		for (Long id : ids) {
+			product.setId(id);
+			//商品状态的变更
+			productDao.updateByPrimaryKeySelective(product);
+			
+			
+			
+			
+			//TODO 保存商品信息到SOlr服务器
+			
+			//TODO 静态化
+		}
 	}
 }

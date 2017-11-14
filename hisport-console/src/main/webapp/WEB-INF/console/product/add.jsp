@@ -84,7 +84,7 @@ function uploadPic(){
 				
 			}
 	}
-	$("#jvForm").ajaxSubmit(options);
+	$("#jvForm").ajaxSubmit(options);//jquery.form.js 比较新版本 form  
 }
 </script>
 </head>
