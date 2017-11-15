@@ -76,12 +76,12 @@ public class ProductServiceImpl implements ProductService{
 	}
 	@Autowired
 	private SkuDao skuDao;
-	/*@Autowired
-	private Jedis jedis;*/
+	@Autowired
+	private Jedis jedis;
 	//商品保存
 	public void insertProduct(Product product){
 		//保存商品  
-	/*	Long id = jedis.incr("pno");
+		Long id = jedis.incr("pno");
 		product.setId(id);
 //		下架状态 后台程序写的
 		product.setIsShow(false);
@@ -119,7 +119,7 @@ public class ProductServiceImpl implements ProductService{
 				skuDao.insertSelective(sku);
 				
 			}
-		}*/
+		}
 	}
 	//上架
 	public void isShow(Long[] ids){
