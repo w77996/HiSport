@@ -33,4 +33,5 @@
 	<dubbo:service interface="com.w77996.core.service.product.BrandService" ref="brandService"/>
 	<dubbo:service interface="com.w77996.core.service.product.UploadService" ref="uploadService"/>
 	<dubbo:service interface="com.w77996.core.service.product.ProductService" ref="productService"/>
+	<dubbo:service interface="com.w77996.core.service.product.SkuService" ref="skuService"/>
 </beans>
