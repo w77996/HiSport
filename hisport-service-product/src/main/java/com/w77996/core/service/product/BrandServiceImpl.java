@@ -1,6 +1,10 @@
 package com.w77996.core.service.product;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +15,7 @@ import com.w77996.core.bean.product.BrandQuery;
 import com.w77996.core.dao.product.BrandDao;
 
 import cn.itcast.common.page.Pagination;
+import redis.clients.jedis.Jedis;
 
 @Service("brandService")
 @Transactional
@@ -60,10 +65,30 @@ public class BrandServiceImpl implements BrandService{
 		// TODO Auto-generated method stub
 		return brandDao.selectBrandById(id);
 	}
+	@Autowired
+	private Jedis jedis;
+	//修改
 	@Override
 	public void updateBrandById(Brand brand) {
 		// TODO Auto-generated method stub
+		//修改Redis
+		jedis.hset("brand", String.valueOf(brand.getId()), brand.getName());
 		brandDao.updateBrandById(brand);
+	}
+
+	//查询 从Redis中
+	public List<Brand> selectBrandListFromRedis(){
+		List<Brand> brands = new ArrayList<Brand>();
+		//Redis中查
+		Map<String, String> hgetAll = jedis.hgetAll("brand");
+		Set<Entry<String, String>> entrySet = hgetAll.entrySet();
+		for (Entry<String, String> entry : entrySet) {
+			Brand brand = new Brand();
+			brand.setId(Long.parseLong(entry.getKey()));
+			brand.setName(entry.getValue());
+			brands.add(brand);
+		}
+		return brands;
 	}
 	@Override
 	public void deletes(Long[] ids) {
