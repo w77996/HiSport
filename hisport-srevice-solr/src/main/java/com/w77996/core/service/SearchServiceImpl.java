@@ -10,11 +10,16 @@ import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.w77996.core.bean.product.Product;
 import com.w77996.core.bean.product.ProductQuery;
+import com.w77996.core.bean.product.Sku;
+import com.w77996.core.bean.product.SkuQuery;
+import com.w77996.core.dao.product.ProductDao;
+import com.w77996.core.dao.product.SkuDao;
 
 import cn.itcast.common.page.Pagination;
 
@@ -30,7 +35,7 @@ public class SearchServiceImpl implements SearchService {
 	private SolrServer solrServer;
 	
 	//全文检索
-	public Pagination selectPaginationByQuery(Integer pageNo,String keyword) throws Exception{
+	public Pagination selectPaginationByQuery(Integer pageNo,String keyword,Long brandId,String price) throws Exception{
 		//创建包装类
 	    ProductQuery productQuery = new ProductQuery();
 	    //当前页
@@ -47,6 +52,19 @@ public class SearchServiceImpl implements SearchService {
 		solrQuery.set("q", "name_ik:" + keyword);
 		params.append("keyword=").append(keyword);
 		//过滤条件
+		if(null != brandId){
+			solrQuery.addFilterQuery("brandId:" + brandId);
+		}
+		//价格   0-99 1600 
+		if(null != price){
+			String[] p = price.split("-");
+			if(p.length == 2){
+				solrQuery.addFilterQuery("price:[" + p[0] + " TO " + p[1] + "]");
+			}else{
+				solrQuery.addFilterQuery("price:[" + p[0] + " TO *]");
+			}
+		}
+		
 		//高亮
 		solrQuery.setHighlight(true);
 		solrQuery.addHighlightField("name_ik");
@@ -86,11 +104,9 @@ public class SearchServiceImpl implements SearchService {
 			String url = (String) doc.get("url");
 			product.setImgUrl(url);//img,img2,img3
 			//价格 售价   select price from bbs_sku where product_id =442 order by price asc limit 0,1
-			Float price = (Float) doc.get("price");
-			product.setPrice(price);
+			product.setPrice((Float) doc.get("price"));
 			//品牌ID Long
-			Integer brandId = (Integer) doc.get("brandId");
-			product.setBrandId(Long.parseLong(String.valueOf(brandId)));
+			product.setBrandId(Long.parseLong(String.valueOf((Integer) doc.get("brandId"))));
 			
 			products.add(product);
 		}
@@ -107,5 +123,40 @@ public class SearchServiceImpl implements SearchService {
 		
 		return pagination;
 	}
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private SkuDao skuDao;
+	//保存商品信息到Solr服务器
+	public void insertProductToSolr(Long id){
+		//TODO 保存商品信息到SOlr服务器
+		SolrInputDocument doc = new SolrInputDocument();
+		//商品ID 
+		doc.setField("id", id);
+		//商品名称  ik
+		Product p = productDao.selectByPrimaryKey(id);
+		doc.setField("name_ik", p.getName());
+		//图片
+		doc.setField("url", p.getImages()[0]);
+		//价格 售价   select price from bbs_sku where product_id =442 order by price asc limit 0,1
+		SkuQuery skuQuery = new SkuQuery();
+		skuQuery.createCriteria().andProductIdEqualTo(id);
+		skuQuery.setOrderByClause("price asc");
+		skuQuery.setPageNo(1);
+		skuQuery.setPageSize(1);
+		skuQuery.setFields("price");
+		List<Sku> skus = skuDao.selectByExample(skuQuery);
+		doc.setField("price", skus.get(0).getPrice());
+		//品牌ID Long
+		doc.setField("brandId", p.getBrandId());
+		//时间  可选
+		try {
+			solrServer.add(doc);
+			solrServer.commit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
-
