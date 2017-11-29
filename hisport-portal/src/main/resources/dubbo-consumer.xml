@@ -40,8 +40,12 @@
 		url="dubbo://127.0.0.1:20880" 
 	/>
 	<!-- 服务换了  service-solr  -->
-	<dubbo:reference interface="cn.itcast.core.service.SearchService" id="searchService"
+	<dubbo:reference interface="com.w77996.core.service.SearchService" id="searchService"
 		url="dubbo://127.0.0.1:20881" 
+	/>
+	<!-- 服务换了  service-solr  -->
+	<dubbo:reference interface="com.w77996.core.service.CmsService" id="cmsService"
+		url="dubbo://127.0.0.1:20882" 
 	/>
 	<!-- <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"	/> -->
 	<!-- 全局设置 -->

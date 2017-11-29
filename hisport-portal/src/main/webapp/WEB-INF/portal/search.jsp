@@ -13,37 +13,31 @@
 <script type="text/javascript">
 //全局变量
 var keyword = '${param.keyword}';
-var price = '${param.price}';
-var brandId = '${param.brandId}';
-//搜索
-function serachKeyword(){
-	window.location.href = "/product/list?keyword=" + $("#keyword").val();
-}
-//点击 品牌   id == 品牌ID
+var brandId = '${brandId}';
+var price = '${price}';
+//过滤条件
+//品牌过滤  id == 品牌ID
 function fqBrand(id){
-	//判断是否有价格
 	if(price != ''){
-		window.location.href = "/product/list?keyword=" + keyword + "&brandId=" + id + "&price=" + price;
+		//刷新
+		window.location.href = "/search?keyword=" + keyword + "&brandId=" + id + "&price=" + price;
 	}else{
-		window.location.href = "/product/list?keyword=" + keyword + "&brandId=" + id;
+		//刷新
+		window.location.href = "/search?keyword=" + keyword + "&brandId=" + id;
 	}
 }
-//点击价格 id == 价格区间
+//过滤价格  id == 价格区间
 function fqPrice(id){
 	if(brandId != ''){
-		window.location.href = "/product/list?keyword=" + keyword + "&brandId=" + brandId + "&price=" + id;
+		//刷新
+		window.location.href = "/search?keyword=" + keyword + "&price=" + id + "&brandId=" + brandId;
 	}else{
-		window.location.href = "/product/list?keyword=" + keyword + "&price=" + id;
+		//刷新
+		window.location.href = "/search?keyword=" + keyword + "&price=" + id;
 	}
 }
-
-
-
-//登陆
-function login(){
-	window.location.href = "http://localhost:8087/shopping/login.aspx?returnUrl=" + encodeURIComponent(window.location.href);
-}
 </script>
+
 </head>
 <body>
 <!-- header start -->
@@ -79,7 +73,7 @@ function login(){
 			<div class="sl-b-selected J_brandSelected">
 				<span class="crumbs-arrow">已选条件：</span>
 					<c:forEach items="${map }" var="m">
-						<a title="依琦莲（yiqilian）"  href="javascript:;" class="crumb-select-item">
+						<a title="品牌：依琦莲（yiqilian）"  onclick="alert(1)" href="javascript:;" class="crumb-select-item">
 							<b>${m.key }：</b><em>${m.value }</em><i></i>
 						</a>
 					</c:forEach>
@@ -94,7 +88,9 @@ function login(){
 <c:if test="${empty brandId }">
 <div class="J_selectorLine s-brand">
 	<div class="sl-wrap">
-		<div class="sl-key"><strong>品牌：</strong></div>
+		<div class="sl-key">
+			<strong>品牌：</strong>
+		</div>
 		<div class="sl-value">
 			<div class="sl-v-list">
 				<ul class="J_valueList v-fixed">
@@ -272,7 +268,7 @@ function login(){
 		<li data-sku="1711416562" class="gl-item">
 			<div class="gl-i-wrap">
 				<div class="p-img">
-					<a href="javascript:;" onclick="window.open('/product/detail?id=${product.id}')" style="position: relative;">
+					<a href="javascript:;"  onclick="window.open('/product/detail?id=${product.id}')" style="position: relative;">
 						<img width="220" height="220" class="err-product"  src="${product.images[0]}">
 						<div id="gwd_float_curve_trigger" class="gwd_float_curve_trigger gwd_float_curve_up" style="left: 70px; top: 180px;">
 							<div class="gwd_float_curve_wrapper">
@@ -295,7 +291,7 @@ function login(){
 					</div>
 				</div>
 				<div class="p-name p-name-type-2">
-					<a target="_blank" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="">
+					<a title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="window.open('http://localhost:8087/html/product/${product.id}.html')">
 						<em>${product.name }</em>
 					</a>
 				</div>

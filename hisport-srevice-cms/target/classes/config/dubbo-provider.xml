@@ -20,34 +20,16 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
- 	<!-- Dubbo消费方 -->
+	<!-- Dubbo提供方 -->
 	<!-- 1：名称  计算机 区别 唯一 -->
-	<dubbo:application name="hisport-portal"/>
+	<dubbo:application name="hisport-service-cms"/>
 	<!-- 2：设置注册中心  地址  zookeeper在哪里  redis ... -->
 <!-- 	<dubbo:registry address="192.168.200.128:2181,192.168.200.129:2181,192.168.200.130:2181" protocol="zookeeper"/> -->
 	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
-	 <dubbo:registry address="N/A" check="false" /> 
-	<!-- 4： 调用此接口对应的实现类  单位毫秒-->
-	
-	 <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"
-		url="dubbo://127.0.0.1:20880"/> 
-	 <dubbo:reference interface="com.w77996.core.service.product.UploadService" id="uploadService"
-	url="dubbo://127.0.0.1:20880"/> 
-	<dubbo:reference interface="com.w77996.core.service.product.ProductService" id="productService"
-		url="dubbo://127.0.0.1:20880" 
-	/>
-	<dubbo:reference interface="com.w77996.core.service.product.SkuService" id="skuService"
-		url="dubbo://127.0.0.1:20880" 
-	/>
-	<!-- 服务换了  service-solr  -->
-	<dubbo:reference interface="com.w77996.core.service.SearchService" id="searchService"
-		url="dubbo://127.0.0.1:20881" 
-	/>
-	<!-- 服务换了  service-solr  -->
-	<dubbo:reference interface="com.w77996.core.service.CmsService" id="cmsService"
-		url="dubbo://127.0.0.1:20882" 
-	/>
-	<!-- <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"	/> -->
-	<!-- 全局设置 -->
-	 <dubbo:consumer timeout="60000" check="false"/>
+	<dubbo:registry address="N/A"/>
+	<!-- 3：dubbo://192.168.39.80:20880  默认  设置提供服务的端口号 -->
+	<dubbo:protocol port="20882" name="dubbo"/>
+	<!-- 4： 暴露实现类-->
+	<dubbo:service interface="com.w77996.core.service.product.CmsService" ref="cmsService"/>
+
 </beans>

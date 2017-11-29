@@ -37,72 +37,73 @@ window.pageConfig = {
 	}
 };
 $(function(){
-	//
-	$("#colors a:first").trigger("click");
+	//初始化加载
+	$("#colors div:first").trigger("click");
 });
-//全局变量
-//skuId
+
+
+//SKUID　全局变量
 var skuId;
 var colorId;
-//点击颜色  颜色的ID == id
+//点击颜色  id == 颜色ID
 function colorToRed(target,id){
 	colorId = id;
-	//清理红色
-	//所有颜色 a 标签 全部变成白色
+	//清理成白色
+// 	$("#colors div").attr("class","item");
 	$("#colors div").removeClass("selected");
+	//点击的颜色变成红边框
+// 	$(target).attr("class","item selected");
 	$(target).addClass("selected");
 	
-	//清理尺码 不可点
-	$("#sizes div").removeClass("selected");
-	//标识
+	//id  ajax 
 	var flag = 0;
-	
-	var html = '';
-	// 此颜色对应哪些有货的尺码 
+	var html = "";
 	<c:forEach items="${skus }" var="sku">
-		//颜色Id
 		if(id == '${sku.colorId}'){
-			//第一次变成红 
 			if(flag == 0){
-				html += '<div class="item selected" onclick="sizeToRed(this,\'${sku.size}\')"><b></b>';
-			    html += '<a href="javascript:;" title="${sku.size}" >${sku.size}</a></div>';
+			html += '<div class="item selected" id="${sku.size}" onclick="sizeToRed(this,\'${sku.size}\')">'
+				 +  '<b></b><a href="javascript:;" title="${sku.size}" >${sku.size}</a>'
+				 +  '</div>';
 				flag = 1;
-				//设置售价
-				$("#bbs-price").html('￥' + '${sku.price}');
-				//skuId
-				skuId = '${sku.id}';
 				
+				//颜色及尺码 都成红色
+				//设置巴巴价
+				$("#bbs-price").html('${sku.price}');
+				//保存一个SKuＩＤ
+				skuId = '${sku.id}';
 			}else{
-				html += '<div class="item" onclick="sizeToRed(this,\'${sku.size}\')"><b></b>';
-			   	html += '<a href="javascript:;" title="${sku.size}" >${sku.size}</a></div>';
+				
+			html += '<div class="item" id="${sku.size}" onclick="sizeToRed(this,\'${sku.size}\')">'
+				 +  '<b></b><a href="javascript:;" title="${sku.size}" >${sku.size}</a>'
+				 +  '</div>';
 			}
 		}
 	</c:forEach>
+	//替换
 	$("#sizes").html(html);
-	
 }
-//点击尺码  id == 尺码 ID
+//点击尺码   id == 尺码 （S。M。。)
 function sizeToRed(target,id){
-
-	//清理尺码 不可点
+	
+	//清理成白色
+// 	$("#sizes div").attr("class","item");
 	$("#sizes div").removeClass("selected");
+	//点击的颜色变成红边框
+// 	$(target).attr("class","item selected");
 	$(target).addClass("selected");
-	//设置价格
+	
+	//价格
 	<c:forEach items="${skus }" var="sku">
-		//判断颜色及尺码 
-		if(id == '${sku.size}' && colorId == '${sku.colorId}'){
-			//设置售价
-			$("#bbs-price").html('￥' + '${sku.price}');
-			//skuId
+		if(colorId == '${sku.colorId}' && id == '${sku.size}'){
+			//颜色及尺码 都成红色
+			//设置巴巴价
+			$("#bbs-price").html('${sku.price}');
+			//保存一个SKuＩＤ
 			skuId = '${sku.id}';
 		}
 	</c:forEach>
 	
-}
-
-//加入购物车
-function addCart(){
-	window.location.href='/shopping/buyerCart?skuId=' + skuId + "&amount=" + $("#buy-num").val();
+	
 }
 </script>
 </head>
@@ -141,7 +142,7 @@ function addCart(){
 						<div class="dt">巴&nbsp;巴&nbsp;价：</div>
 						<div class="dd">
 							<strong class="p-price" id="bbs-price">￥888.00</strong> <a
-								id="notice-downp" href="#none" target="_blank">(降价通知)</a>
+								id="notice-downp" href="javascript:;" target="_blank">(降价通知)</a>
 						</div>
 					</li>
 					<li id="summary-market"><div class="dt">商品编号：</div>
@@ -211,9 +212,6 @@ function addCart(){
 			<div id="choose-version" class="li p-choose">
 				<div class="dt">选择尺码：</div>
 				<div class="dd" id="sizes">
-					<div class="item" id="S" onclick="sizeToRed(this,'S')">
-						<b></b><a href="javascript:;" title="S" >S</a>
-					</div>
 				</div>
 			</div>
 				<!--brand-bar-->
@@ -318,7 +316,7 @@ function addCart(){
 						<li clstag="shangpin|keycount|product|psaleservice"
 							data-widget="tab-item"><a href="javascript:;">售后保障</a></li>
 						<li clstag="shangpin|keycount|product|zhinan"
-							data-widget='tab-item'><a href='javascript:;'>京博士</a></li>
+							data-widget='tab-item'><a href='javascript:;'>巴博士</a></li>
 					</ul>
 				</div>
 				<div class="mc" data-widget="tab-content" id="product-detail-1">
