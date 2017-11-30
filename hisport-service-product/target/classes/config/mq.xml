@@ -48,6 +48,8 @@
 		<property name="connectionFactory" ref="connectionFactory"/>
 		<!-- 默认目标 -->
 		<property name="defaultDestinationName" value="productId"/>
+		<!-- 默认点对点模式   false  /  true订阅模式     publish  sub-->
+		<property name="pubSubDomain" value="true"/>
 	</bean>
 	
 	
