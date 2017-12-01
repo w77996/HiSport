@@ -67,6 +67,7 @@ public class BrandServiceImpl implements BrandService{
 	}
 	@Autowired
 	private Jedis jedis;
+	
 	//修改
 	@Override
 	public void updateBrandById(Brand brand) {
