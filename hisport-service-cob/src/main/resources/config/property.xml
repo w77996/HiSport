@@ -20,36 +20,14 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 		
-	<!-- 扫描 @Contr -->	
-	<context:component-scan base-package="cn.itcast" />
-	
-	<!-- 处理器 映射器  适配器 -->
-	<mvc:annotation-driven conversion-service="conversionService"/>
-	
-	<!-- 视图解释器 jsp -->
-	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/login/"/>
-		<property name="suffix" value=".jsp"/>
-	</bean>
-	
-	
-	<!-- Converter转换器 工厂 -->
-	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<!-- 日期 -->
-		<!-- 去掉前后空格 -->
-		<property name="converters">
+		<!-- <context:property-placeholder location="classpath:jdbc.properties"/> -->
+		
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
 			<list>
-				<bean class="com.w77996.common.conversion.CustomConverter"></bean>
+				<value>classpath:jdbc.properties</value>
+				
 			</list>
 		</property>
 	</bean>
-	
-	<!-- 图片上传 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-	
-	
-	<import resource="dubbo-consumer.xml"/>
-	
-	
-		
 </beans>
