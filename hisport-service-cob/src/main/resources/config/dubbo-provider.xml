@@ -28,8 +28,8 @@
 	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
 	<dubbo:registry address="N/A"/>
 	<!-- 3：dubbo://192.168.39.80:20880  默认  设置提供服务的端口号 -->
-	<dubbo:protocol port="20883" name="dubbo"/>
+	<dubbo:protocol port="20883 " name="dubbo"/>
 	<!-- 4： 暴露实现类-->
-	<dubbo:service interface="com.w77996.core.service.BuyerServie" ref="buyerService"/>
+	<dubbo:service interface="com.w77996.core.service.user.BuyerServie" ref="buyerService"/>
 
 </beans>

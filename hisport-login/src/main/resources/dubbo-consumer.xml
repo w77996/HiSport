@@ -22,7 +22,7 @@
 		
  	<!-- Dubbo消费方 -->
 	<!-- 1：名称  计算机 区别 唯一 -->
-	<dubbo:application name="hisport-portal"/>
+	<dubbo:application name="hisport-login"/>
 	<!-- 2：设置注册中心  地址  zookeeper在哪里  redis ... -->
 <!-- 	<dubbo:registry address="192.168.200.128:2181,192.168.200.129:2181,192.168.200.130:2181" protocol="zookeeper"/> -->
 	<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
@@ -30,7 +30,8 @@
 	<!-- 4： 调用此接口对应的实现类  单位毫秒-->
 	
 	
-	<!-- <dubbo:reference interface="com.w77996.core.service.product.BrandService" id="brandService"	/> -->
+	<dubbo:service interface="com.w77996.core.service.user.BuyerServie" ref="buyerService"
+		url="dubbo://127.0.0.1:20883"/>
 	<!-- 全局设置 -->
 	 <dubbo:consumer timeout="60000" check="false"/>
 </beans>
