@@ -105,6 +105,11 @@ function sizeToRed(target,id){
 	
 	
 }
+//加入购物车
+function addCart(){
+	
+	window.location.href = "/addCart?skuId=" + skuId + "&amount=" + $("#buy-num").val();
+}
 </script>
 </head>
 <body>

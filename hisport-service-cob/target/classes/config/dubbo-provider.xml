@@ -31,5 +31,5 @@
 	<dubbo:protocol port="20883 " name="dubbo"/>
 	<!-- 4： 暴露实现类-->
 	<dubbo:service interface="com.w77996.core.service.user.BuyerServie" ref="buyerService"/>
-
+	<dubbo:service interface="com.w77996.core.service.user.SessionProvider" ref="sessionProvider"/>
 </beans>

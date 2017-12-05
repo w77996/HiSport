@@ -2,6 +2,7 @@ package com.w77996.core.service.product;
 
 import java.util.List;
 
+import com.w77996.core.bean.BuyerCart;
 import com.w77996.core.bean.product.Sku;
 
 public interface SkuService {
@@ -11,4 +12,15 @@ public interface SkuService {
 	
 	//修改
 	public void updateSkuById(Sku sku);
+	
+	//通过SKUID查询SKU对象
+	public Sku selectSkuById(Long id);
+	
+	
+	//保存商品到Redis中
+	public void insertBuyerCartToRedis(BuyerCart buyerCart,String username);
+	
+	
+	//取出购物车从Redis
+	public BuyerCart selectBuyerCartFromRedis(String username);
 }

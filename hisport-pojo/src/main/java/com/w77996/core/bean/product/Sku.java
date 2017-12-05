@@ -1,5 +1,4 @@
 package com.w77996.core.bean.product;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -50,10 +49,26 @@ public class Sku implements Serializable {
     private Integer upperLimit;
 
     private Date createTime;
-
     
+    //附加颜色对象
     private Color color;
-    public Color getColor() {
+    private Product product;
+    
+    
+    
+    
+    
+    
+
+    public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Color getColor() {
 		return color;
 	}
 
